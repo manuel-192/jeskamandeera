@@ -9,6 +9,9 @@ alias ll='ls -la --ignore=..'
 # RCS ci feature change:
 alias ci='ci -u'
 
+# humanly df:
+alias df='df -hT'
+
 # 'sou' is an easy re-read of .bashrc:
 alias sou='source ~/.bashrc'
 
