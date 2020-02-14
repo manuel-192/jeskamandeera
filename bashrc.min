@@ -3,21 +3,19 @@
 # Some convenient bash settings.
 
 # how to show directory contents:
-alias l='ls -la --ignore=.?*'
-alias ll='ls -la --ignore=..'
+alias ci='ci -u'                    # RCS ci feature change
+alias df='df -hT'                   # humanly df
+alias l='ls -la --ignore=.?*'       # show non-hidden files
+alias ll='ls -la --ignore=..'       # show all files
+alias lt='l -tr'                    # show files in modification time order
+alias sou='source ~/.bashrc'        # re-read ~/.bashrc
+alias o='edit_any_file'             # open any file for editing
+alias v='view_html_file'            # view html files
 
-# RCS ci feature change:
-alias ci='ci -u'
-
-# humanly df:
-alias df='df -hT'
-
-# 'sou' is an easy re-read of .bashrc:
-alias sou='source ~/.bashrc'
-
-# 'e' opens any file for editing (may need pre-configuration with thunar)
-e()
+edit_any_file()
 {
+    # opens any file for editing (may need pre-configuration with thunar)
+
     local tools="exo-open xdg-open"  # depending on one of these tools
     local tool
 
@@ -30,12 +28,13 @@ e()
     echo "Error: none of [$tools] is installed." >&2
 }
 
-# 'v' opens any file for viewing
-v()
+view_html_file()
 {
+    # opens html files for viewing
+
     case "$1" in
         *.html|*.htm) firefox "$1" >& /dev/null & ;;
-        *) e "$1" ;;
+        *) edit_any_file "$1" ;;
     esac
 }
 
